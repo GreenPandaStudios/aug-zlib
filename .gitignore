@@ -1,0 +1,7 @@
+.aug-build/
+.aug-packages/
+.aug-install-*/
+node_modules/
+native/target/
+*.tar.gz
+aug.lock.json

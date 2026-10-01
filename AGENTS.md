@@ -1,0 +1,1 @@
+Keep native ownership, checked errors, input bounds and upstream identities explicit. Edit canonical source and native.abi.json together. Regenerate .aug.md with aug spec. Consumers install verified prebuilt artifacts; never add automatic installation scripts. Test the actual upstream implementation and resource cleanup.

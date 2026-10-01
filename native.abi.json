@@ -1,0 +1,57 @@
+{
+  "format": 1,
+  "profile": "aug-native-abi-1",
+  "resources": [],
+  "functions": [
+    {
+      "module": "api",
+      "name": "_compress",
+      "symbol": "aug_zlib_compress_v1",
+      "params": [
+        {
+          "name": "input",
+          "kind": "bytes"
+        }
+      ],
+      "result": {
+        "kind": "bytes",
+        "release": "aug_zlib_release_v1"
+      },
+      "error": "contracts.CompressionError",
+      "callingConvention": "C",
+      "status": "i32",
+      "uses": [],
+      "changes": [],
+      "thread": "caller",
+      "retainsInputs": false
+    },
+    {
+      "module": "api",
+      "name": "_decompress",
+      "symbol": "aug_zlib_decompress_v1",
+      "params": [
+        {
+          "name": "input",
+          "kind": "bytes"
+        },
+        {
+          "name": "maximumOutput",
+          "kind": "i64",
+          "minimum": 0,
+          "maximum": 268435456
+        }
+      ],
+      "result": {
+        "kind": "bytes",
+        "release": "aug_zlib_release_v1"
+      },
+      "error": "contracts.CompressionError",
+      "callingConvention": "C",
+      "status": "i32",
+      "uses": [],
+      "changes": [],
+      "thread": "caller",
+      "retainsInputs": false
+    }
+  ]
+}
