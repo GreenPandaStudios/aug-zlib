@@ -1,4 +1,4 @@
-import CompressionError and compress and decompress from "https://github.com/GreenPandaStudios/aug-zlib#v0.1.0"
+import CompressionError and compress and decompress from "https://github.com/GreenPandaStudios/aug-zlib#v0.1.1"
 try:
     Bytes input = "The world runs on language".bytes()
     Bytes compressed = compress(input)

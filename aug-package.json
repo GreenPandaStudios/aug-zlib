@@ -1,8 +1,8 @@
 {
   "format": 2,
   "name": "@greenpandastudios/aug-zlib",
-  "version": "0.1.0",
-  "compiler": "0.21.0-native.1",
+  "version": "0.1.1",
+  "compiler": "0.21.0",
   "source": "src",
   "dependencies": {},
   "native": {
@@ -25,7 +25,7 @@
           "cpuBaseline": "armv8-a",
           "libc": "libSystem"
         },
-        "url": "https://github.com/GreenPandaStudios/aug-zlib/releases/download/v0.1.0/native-macos-arm64.tar.gz",
+        "url": "https://github.com/GreenPandaStudios/aug-zlib/releases/download/v0.1.1/native-macos-arm64.tar.gz",
         "sha256": "95a3bd643d09d98605bc25eccc7f53b06fc8e79f305db67012995111110e5389",
         "maximumDownloadBytes": 39726,
         "maximumUnpackedBytes": 104031,
