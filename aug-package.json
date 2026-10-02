@@ -16,6 +16,86 @@
     },
     "artifacts": [
       {
+        "id": "linux-arm64",
+        "target": {
+          "triple": "aarch64-unknown-linux-gnu",
+          "os": "linux",
+          "arch": "arm64",
+          "minimumLibc": "2.36",
+          "cpuBaseline": "armv8-a",
+          "libc": "glibc"
+        },
+        "url": "https://github.com/GreenPandaStudios/aug-zlib/releases/download/v0.1.3/native-linux-arm64.tar.gz",
+        "sha256": "6da832fa341a1fba96643244da2bb63957107d2b1413743c363fca002e500c66",
+        "maximumDownloadBytes": 101094,
+        "maximumUnpackedBytes": 248063,
+        "link": {
+          "kind": "dynamic",
+          "libraries": [
+            "lib/libaug_zlib.so.1"
+          ]
+        },
+        "runtime": {
+          "files": [
+            "lib/libaug_zlib.so.1"
+          ],
+          "closureManifest": "runtime-files.json",
+          "relocation": "loader-relative"
+        },
+        "components": [
+          {
+            "id": "https://github.com/madler/zlib",
+            "version": "1.3.2",
+            "compatibilityKey": "aug-zlib-runtime",
+            "linkage": "static",
+            "required": true
+          }
+        ],
+        "fileManifest": "files.json",
+        "provenance": "provenance.json",
+        "notices": "THIRD_PARTY_NOTICES.md"
+      },
+      {
+        "id": "linux-x64",
+        "target": {
+          "triple": "x86_64-unknown-linux-gnu",
+          "os": "linux",
+          "arch": "x64",
+          "minimumLibc": "2.36",
+          "cpuBaseline": "x86-64",
+          "libc": "glibc"
+        },
+        "url": "https://github.com/GreenPandaStudios/aug-zlib/releases/download/v0.1.3/native-linux-x64.tar.gz",
+        "sha256": "c2a6e6522e3a96e1ee99f1b195f7457a7ab633dc05b65a29020aa5ea1ec7aa5d",
+        "maximumDownloadBytes": 109033,
+        "maximumUnpackedBytes": 205301,
+        "link": {
+          "kind": "dynamic",
+          "libraries": [
+            "lib/libaug_zlib.so.1"
+          ]
+        },
+        "runtime": {
+          "files": [
+            "lib/libaug_zlib.so.1"
+          ],
+          "closureManifest": "runtime-files.json",
+          "relocation": "loader-relative"
+        },
+        "components": [
+          {
+            "id": "https://github.com/madler/zlib",
+            "version": "1.3.2",
+            "compatibilityKey": "aug-zlib-runtime",
+            "linkage": "static",
+            "required": true
+          }
+        ],
+        "fileManifest": "files.json",
+        "provenance": "provenance.json",
+        "notices": "THIRD_PARTY_NOTICES.md"
+      },
+      {
         "id": "macos-arm64",
         "target": {
           "triple": "aarch64-apple-darwin",
@@ -25,10 +105,10 @@
           "cpuBaseline": "armv8-a",
           "libc": "libSystem"
         },
-        "url": "https://github.com/GreenPandaStudios/aug-zlib/releases/download/v0.1.1/native-macos-arm64.tar.gz",
-        "sha256": "95a3bd643d09d98605bc25eccc7f53b06fc8e79f305db67012995111110e5389",
-        "maximumDownloadBytes": 39726,
-        "maximumUnpackedBytes": 104031,
+        "url": "https://github.com/GreenPandaStudios/aug-zlib/releases/download/v0.1.3/native-macos-arm64.tar.gz",
+        "sha256": "62419afbf81826f939e89be6c025781edb0cae4fe60e43736b2d3fa9fdf28dd4",
+        "maximumDownloadBytes": 39969,
+        "maximumUnpackedBytes": 106060,
         "link": {
           "kind": "dynamic",
           "libraries": [
@@ -60,8 +140,10 @@
       "recipe": "native/build.json",
       "inputs": "native/sources.lock.json",
       "tools": [
+        "Node 24+",
         "Clang",
-        "Apple macOS SDK"
+        "macOS: Apple SDK",
+        "GNU/Linux: Docker with the pinned Debian 12 maintainer image and patchelf"
       ],
       "automatic": false
     }

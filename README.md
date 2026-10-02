@@ -2,7 +2,7 @@
 
 Compression and decompression backed by zlib. Both operations copy their output into August Bytes and release the native allocation.
 
-This package targets the August `0.21.0` LLVM preview on macOS 14 or later, ARM64. Its source is ready for qualification; consumption requires the matching public compiler and native release assets. It does not work with August 0.20.1.
+This package targets the August `0.21.0` LLVM preview on macOS 14 or later (ARM64), and Debian/Ubuntu GNU/Linux with glibc 2.36 or later (x64 and ARM64). Its source is ready for qualification; consumption requires the matching public compiler and native release assets. It does not work with August 0.20.1.
 
 ## Use it
 
@@ -11,7 +11,7 @@ After those preview assets are published:
 ```sh
 aug init native-example
 cd native-example
-aug add https://github.com/GreenPandaStudios/aug-zlib#v0.1.1 --as zlib
+aug add https://github.com/GreenPandaStudios/aug-zlib#v0.1.3 --as zlib
 ```
 
 Replace `main.aug` with:
@@ -45,4 +45,4 @@ Maintain binding declarations and the descriptor together. Run `aug check .`, `a
 
 The prebuilt archive includes upstream notices, provenance, a runtime dependency inventory and a whole-file manifest. Installing this package does not run build scripts. An unsupported target or missing artifact is an error; there is no automatic source-build fallback.
 
-Linux x86-64 and ARM64 candidates are built on Debian 12 with a glibc 2.36 floor. Their publication and installed-CLI qualification are tracked separately from the current macOS artifacts. See [the native maintainer workflow](native/LINUX.md). Do not use a candidate hash as a public download until its exact archive has been published.
+The `v0.1.3` release workflow downloads the reviewed three-platform candidate run, verifies unchanged binding and build inputs, and publishes the exact pinned archives. `release-candidates.json` identifies that run; it is separate from native source inputs. No native toolchain is needed by consumers. See [the native maintainer workflow](native/LINUX.md). The matching August compiler release and public installed-CLI checks must pass before claiming complete platform support.
