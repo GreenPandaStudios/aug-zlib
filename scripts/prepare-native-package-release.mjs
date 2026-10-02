@@ -83,5 +83,5 @@ export function prepareNativePackageRelease(root,input,output){
 }
 if(process.argv[1]&&pathToFileURL(resolve(process.argv[1])).href===import.meta.url){
   assert.ok(process.argv[2]&&existsSync(process.argv[2]),'Provide the downloaded native candidate directory');
-  console.log(JSON.stringify(prepareNativePackageRelease(resolve(import.meta.dirname,'..'),process.argv[2],process.argv[3]??'.aug-build/release')));
+  console.log(JSON.stringify(prepareNativePackageRelease(process.cwd(),process.argv[2],process.argv[3]??'.aug-build/release')));
 }
