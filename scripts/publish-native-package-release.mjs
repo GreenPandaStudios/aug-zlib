@@ -29,11 +29,20 @@ assert.deepEqual(files,['SHA256SUMS','native-linux-arm64.tar.gz','native-linux-x
 const sha=bytes=>createHash('sha256').update(bytes).digest('hex');
 verifyNativeReleaseDirectory(root,directory);
 const findRelease=()=>JSON.parse(gh(['api',`repos/${repository}/releases?per_page=100`])).find(release=>release.tag_name===tag);
+// GitHub's collection can briefly omit a newly created draft. Retry only reads;
+// never create another release or overwrite assets to repair visibility.
+const visibleRelease=async()=>{
+  for(let attempt=0;attempt<20;attempt++){
+    const release=findRelease();if(release)return release;
+    if(attempt<19)await new Promise(resolve=>setTimeout(resolve,1000));
+  }
+  assert.fail('Created release is not visible after the bounded visibility wait');
+};
 let release=findRelease();
 if(!release){
   gh(['release','create',tag,'--repo',repository,'--draft','--prerelease','--verify-tag','--title',manifest.name+' '+manifest.version,
     '--notes','CPU native packages for the August 0.21.0 LLVM preview. Includes macOS ARM64 and Debian/Ubuntu GNU/Linux x64 and ARM64 artifacts. Source, licenses, dependency provenance and cleanup tests are recorded with the exact candidate archives.']);
-  release=findRelease();
+  release=await visibleRelease();
 }
 assert.ok(release,'Created release is not visible to this publishing identity');
 assert.ok(release.assets.every(asset=>files.includes(asset.name)),'Existing release contains unexpected assets');
