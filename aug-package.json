@@ -1,7 +1,7 @@
 {
   "format": 2,
   "name": "@greenpandastudios/aug-zlib",
-  "version": "0.1.1",
+  "version": "0.1.3",
   "compiler": "0.21.0",
   "source": "src",
   "dependencies": {},

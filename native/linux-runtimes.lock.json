@@ -1,0 +1,153 @@
+{
+  "format": 1,
+  "distribution": "Debian 12",
+  "minimumLibc": "2.36",
+  "gcc": "12.2.0-14+deb12u1",
+  "zlib": "1.2.13.dfsg-1",
+  "inputs": [
+    {
+      "file": "gcc-12_12.2.0.orig.tar.gz",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/gcc-12_12.2.0.orig.tar.gz",
+      "sha256": "b8298be16aeeb96a889c6afed0a8e2241b47452e89cc81fe65ea849d5c740fcb",
+      "bytes": 87090343
+    },
+    {
+      "file": "gcc-12_12.2.0-14+deb12u1.debian.tar.xz",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/gcc-12_12.2.0-14%2Bdeb12u1.debian.tar.xz",
+      "sha256": "59f7f7763a0c355e3f27ff9e7ac80d06382b29939361a87e7b139226bfe7402e",
+      "bytes": 1675204
+    },
+    {
+      "file": "zlib_1.2.13.dfsg.orig.tar.bz2",
+      "url": "https://deb.debian.org/debian/pool/main/z/zlib/zlib_1.2.13.dfsg.orig.tar.bz2",
+      "sha256": "71feb7947e3c00ef125f83b79a4e529bde31171e5babe48b391f06758d1ab0a1",
+      "bytes": 1239825
+    },
+    {
+      "file": "zlib_1.2.13.dfsg-1.debian.tar.xz",
+      "url": "https://deb.debian.org/debian/pool/main/z/zlib/zlib_1.2.13.dfsg-1.debian.tar.xz",
+      "sha256": "f66cf3d4f2d7defcd4d1fd1fb0a11ee39f1e01b42ec7d059c9dc5c1695133c44",
+      "bytes": 15700
+    },
+    {
+      "file": "libstdc++6_12.2.0-14+deb12u1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/libstdc%2B%2B6_12.2.0-14%2Bdeb12u1_amd64.deb",
+      "sha256": "5cd3171216d4ab0fc911cfe9c35509bf2dd8f47761c43b7f6a4296701551a24d",
+      "bytes": 612604
+    },
+    {
+      "file": "libgcc-s1_12.2.0-14+deb12u1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/libgcc-s1_12.2.0-14%2Bdeb12u1_amd64.deb",
+      "sha256": "3016e62cb4b7cd8038822870601f5ed131befe942774d0f745622cc77d8a88f7",
+      "bytes": 49856
+    },
+    {
+      "file": "libgomp1_12.2.0-14+deb12u1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/libgomp1_12.2.0-14%2Bdeb12u1_amd64.deb",
+      "sha256": "48fec46bda7f5b1638b9e959889bfbc20491247d402d120bb152687eb48143d7",
+      "bytes": 115772
+    },
+    {
+      "file": "zlib1g_1.2.13.dfsg-1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/z/zlib/zlib1g_1.2.13.dfsg-1_amd64.deb",
+      "sha256": "d7dd1d1411fedf27f5e27650a6eff20ef294077b568f4c8c5e51466dc7c08ce4",
+      "bytes": 86684
+    },
+    {
+      "file": "libstdc++6_12.2.0-14+deb12u1_arm64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/libstdc%2B%2B6_12.2.0-14%2Bdeb12u1_arm64.deb",
+      "sha256": "26e138c677a985775331373828a6c286c551ff397cb735d00e2383cb273d1cb2",
+      "bytes": 556608
+    },
+    {
+      "file": "libgcc-s1_12.2.0-14+deb12u1_arm64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/libgcc-s1_12.2.0-14%2Bdeb12u1_arm64.deb",
+      "sha256": "576926b283613db80168ddf76380a3bd877602778cf0d226caa7bfbfa71eacf3",
+      "bytes": 34816
+    },
+    {
+      "file": "libgomp1_12.2.0-14+deb12u1_arm64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/libgomp1_12.2.0-14%2Bdeb12u1_arm64.deb",
+      "sha256": "a48b70dd1a95585466b40bd94564bce56ebcb2566e49ccdb6441e996aaab2098",
+      "bytes": 104092
+    },
+    {
+      "file": "zlib1g_1.2.13.dfsg-1_arm64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/z/zlib/zlib1g_1.2.13.dfsg-1_arm64.deb",
+      "sha256": "52b8b8a145bbe1956bba82034f77022cbef0c3d0885c9e32d9817a7932fe1913",
+      "bytes": 82744
+    },
+    {
+      "file": "libicu70_70.1-2ubuntu1_amd64.deb",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/i/icu/libicu70_70.1-2ubuntu1_amd64.deb",
+      "sha256": "223c1e6cebf2a6748637303227d8b84337c14a2d30eacbc46a68d02557dcff3e",
+      "bytes": 10581724,
+      "scope": "tools"
+    },
+    {
+      "file": "libicu70_70.1-2ubuntu1_arm64.deb",
+      "url": "https://ports.ubuntu.com/pool/main/i/icu/libicu70_70.1-2ubuntu1_arm64.deb",
+      "sha256": "a06f86489e364f555a0655f476e6b2693760aff9d8dec0011daf9b17957da3c5",
+      "bytes": 10503844,
+      "scope": "tools"
+    },
+    {
+      "file": "icu_70.1.orig.tar.gz",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/i/icu/icu_70.1.orig.tar.gz",
+      "sha256": "8d205428c17bf13bb535300669ed28b338a157b1c01ae66d31d0d3e2d47c3fd5",
+      "bytes": 25449582,
+      "scope": "tools"
+    },
+    {
+      "file": "icu_70.1-2ubuntu1.debian.tar.xz",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/main/i/icu/icu_70.1-2ubuntu1.debian.tar.xz",
+      "sha256": "06097730d30ab07315b669c52c6940959ba2af873b457bc3566c2b16be4e0ac4",
+      "bytes": 63244,
+      "scope": "tools"
+    },
+    {
+      "file": "liblzma5_5.4.1-1+deb12u2_amd64.deb",
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/x/xz-utils/liblzma5_5.4.1-1%2Bdeb12u2_amd64.deb",
+      "sha256": "3d8c29c8c21ec6007635e1b2591edf98b771c9572a085968f47452b33040f384",
+      "bytes": 205796,
+      "scope": "tools"
+    },
+    {
+      "file": "liblzma5_5.4.1-1+deb12u2_arm64.deb",
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/x/xz-utils/liblzma5_5.4.1-1%2Bdeb12u2_arm64.deb",
+      "sha256": "36358d245f246234721e6c1c2ee5d11a46c1c877023c63f7570df02cd79964f5",
+      "bytes": 199704,
+      "scope": "tools"
+    },
+    {
+      "file": "xz-utils_5.4.1.orig.tar.xz",
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/x/xz-utils/xz-utils_5.4.1.orig.tar.xz",
+      "sha256": "5d9827aa1875b21c288f78864bb26d2650b436ea8d2cad364e4921eb6266a5a5",
+      "bytes": 1485272,
+      "scope": "tools"
+    },
+    {
+      "file": "xz-utils_5.4.1-1+deb12u2.debian.tar.xz",
+      "url": "https://deb.debian.org/debian-security/pool/updates/main/x/xz-utils/xz-utils_5.4.1-1%2Bdeb12u2.debian.tar.xz",
+      "sha256": "7e0b1d1448520ea4f88ec05136a88f07564cc4a1abd6dfcf53c1f822a3e4f64f",
+      "bytes": 95356,
+      "scope": "tools"
+    },
+    {
+      "file": "libgfortran5_12.2.0-14+deb12u1_amd64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/libgfortran5_12.2.0-14%2Bdeb12u1_amd64.deb",
+      "sha256": "63d38775d20c425c1f00914b52167ae0e3b4639facdb0aa734877279fb716fbb",
+      "bytes": 792696,
+      "scope": "fortran"
+    },
+    {
+      "file": "libgfortran5_12.2.0-14+deb12u1_arm64.deb",
+      "url": "https://deb.debian.org/debian/pool/main/g/gcc-12/libgfortran5_12.2.0-14%2Bdeb12u1_arm64.deb",
+      "sha256": "583497cf5a95960c11f2006586050375c4adbc4b0c569a7e7df346f2bf380cbc",
+      "bytes": 339792,
+      "scope": "fortran"
+    }
+  ],
+  "icu": "70.1-2ubuntu1",
+  "xz": "5.4.1-1+deb12u2"
+}

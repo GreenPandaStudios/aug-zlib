@@ -8,8 +8,23 @@ permissions:
   contents: read
 jobs:
   native:
-    runs-on: macos-15
-    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: macos-15
+            target: macos-arm64
+            directory: native
+          - runner: ubuntu-24.04
+            target: linux-x64
+            directory: native-linux-x64
+          - runner: ubuntu-24.04-arm
+            target: linux-arm64
+            directory: native-linux-arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 40
+    env:
+      AUG_PACKAGE_SOURCE_REVISION: ${{ github.sha }}
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
         with:
@@ -18,11 +33,25 @@ jobs:
         with:
           node-version: '24'
           package-manager-cache: false
-      - run: node native/build.mjs
+      - name: Build and test macOS candidate
+        if: runner.os == 'macOS'
+        run: node native/build.mjs
+      - name: Build and test GNU/Linux candidate on Debian 12
+        if: runner.os == 'Linux'
+        run: |
+          docker build -f native/Dockerfile -t aug-native-maintainer .
+          docker create --env AUG_PACKAGE_SOURCE_REVISION --name candidate aug-native-maintainer
+          docker start --attach candidate
+          docker cp candidate:/package/.aug-build .aug-build
+          docker cp candidate:/package/aug-package.json aug-package.json
+      - name: Verify build inputs before collecting the candidate
+        run: node native/verify-candidate.mjs .aug-build/${{ matrix.directory }}/candidate.json
       - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
-          name: native-candidate
+          name: native-candidate-${{ matrix.target }}
+          include-hidden-files: true
           path: |
-            .aug-build/native/native-macos-arm64.tar.gz
+            .aug-build/${{ matrix.directory }}/native-${{ matrix.target }}.tar.gz
+            .aug-build/${{ matrix.directory }}/candidate.json
             aug-package.json
           if-no-files-found: error

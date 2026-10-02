@@ -1,0 +1,5 @@
+.git
+.aug-build
+.aug-packages
+node_modules
+native/target
