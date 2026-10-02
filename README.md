@@ -2,7 +2,7 @@
 
 Compression and decompression backed by zlib. Both operations copy their output into August Bytes and release the native allocation.
 
-This package targets the August `0.21.0` LLVM preview on macOS 14 or later (ARM64), and Debian/Ubuntu GNU/Linux with glibc 2.36 or later (x64 and ARM64). Its source is ready for qualification; consumption requires the matching public compiler and native release assets. It does not work with August 0.20.1.
+This package targets the August `0.22.0` LLVM preview on macOS 14 or later (ARM64), and Debian/Ubuntu GNU/Linux with glibc 2.36 or later (x64 and ARM64). Its source is ready for qualification; consumption requires the matching public compiler and native release assets. It does not work with August 0.20.1.
 
 ## Use it
 
@@ -48,3 +48,7 @@ The prebuilt archive includes upstream notices, provenance, a runtime dependency
 The `v0.1.3` release workflow downloads the reviewed three-platform candidate run, verifies unchanged binding and build inputs, and publishes the exact pinned archives. `release-candidates.json` identifies that run; it is separate from native source inputs. No native toolchain is needed by consumers. See [the native maintainer workflow](native/LINUX.md). The matching August compiler release and public installed-CLI checks must pass before claiming complete platform support.
 
 If publication stops, retry the release workflow on main with the existing tag in its `tag` input. It checks out that immutable source tag and uses the corrected maintainer publisher. It rechecks the source and artifacts, leaves partial uploads draft, and refuses to overwrite different bytes.
+
+## August 0.22 source package
+
+This source tag targets the isolated-worker compiler preview. Its native bindings are unchanged and its manifest deliberately reuses the previously published, checksum-pinned native archives. The existing native ABI remains unchanged. These bindings do not yet declare worker safety; use them on their creating heap. The separate GPU package qualifies worker entry explicitly.

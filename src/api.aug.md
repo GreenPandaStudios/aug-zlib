@@ -21,14 +21,14 @@ Within an unsafe block, it returns [`_decompress`](api.aug.md#symbol-_decompress
 
 It is private to its defining scope. It takes `input` as `Bytes`. It returns `Bytes`. Failures can raise [`CompressionError`](contracts.aug.md#symbol-CompressionError).
 
-Native C implementation; only its declared contract is visible here.
+Native implementation: `@greenpandastudios/aug-zlib@0.1.4`, `1.3.2`. Supported targets: linux arm64 glibc 2.36+, linux x64 glibc 2.36+, macos arm64 14.0+. Binding contract: [`native.abi.json`](../.aug-spec/packages/%40greenpandastudios/aug-zlib/0.1.4/native.abi.json) (SHA-256 `c3d4b36eadcccd13caff71597ed77a8e7307f0cfe3d13660a8e9127efe942b3d`). It calls `aug_zlib_compress_v1` through the C ABI on the caller thread; a blocking native call blocks that thread. August copies the returned buffer, then calls `aug_zlib_release_v1` to release it. Its contract does not permit worker entry. The compiler checks the provider, descriptor digest, signature and ownership at August call sites. The native author promises not to retain inputs, enter August from foreign threads, or unwind across the C boundary; internal native workers may run. The compiler does not prove those promises.
 
 <a id="symbol-_decompress"></a>
 ## `_decompress` · [source](api.aug#L4)
 
 It is private to its defining scope. It takes `input` as `Bytes` and `maximumOutput` as an integer. It returns `Bytes`. Failures can raise [`CompressionError`](contracts.aug.md#symbol-CompressionError).
 
-Native C implementation; only its declared contract is visible here.
+Native implementation: `@greenpandastudios/aug-zlib@0.1.4`, `1.3.2`. Supported targets: linux arm64 glibc 2.36+, linux x64 glibc 2.36+, macos arm64 14.0+. Binding contract: [`native.abi.json`](../.aug-spec/packages/%40greenpandastudios/aug-zlib/0.1.4/native.abi.json) (SHA-256 `c3d4b36eadcccd13caff71597ed77a8e7307f0cfe3d13660a8e9127efe942b3d`). It calls `aug_zlib_decompress_v1` through the C ABI on the caller thread; a blocking native call blocks that thread. August copies the returned buffer, then calls `aug_zlib_release_v1` to release it. Its contract does not permit worker entry. The compiler checks the provider, descriptor digest, signature and ownership at August call sites. The native author promises not to retain inputs, enter August from foreign threads, or unwind across the C boundary; internal native workers may run. The compiler does not prove those promises.
 
 <a id="symbol-test compress"></a>
 ## `test compress` · [source](api.aug#L14)
