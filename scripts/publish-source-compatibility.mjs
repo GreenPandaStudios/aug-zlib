@@ -14,7 +14,18 @@ const origins=new Set(manifest.native.artifacts.map(a=>{
 }));assert.equal(origins.size,1);const originalTag=[...origins][0];assert.notEqual(tag,originalTag);
 const originalFile=path=>Buffer.from(JSON.parse(gh(['api',`repos/${repository}/contents/${path}?ref=${originalTag}`])).content,'base64');
 const original=JSON.parse(originalFile('aug-package.json'));
-assert.deepEqual(manifest.native,original.native,'Source-only releases must preserve every native contract and artifact pin');
+assert.deepEqual({...manifest,version:original.version,compiler:original.compiler},original,'A compatibility release may change only package and compiler versions');
+const tree=JSON.parse(gh(['api',`repos/${repository}/git/trees/${originalTag}?recursive=1`]));
+assert.equal(tree.truncated,false,'Original binding source inventory is incomplete');
+const previousBindings=tree.tree.filter(file=>file.type==='blob'&&file.path.startsWith(original.source+'/')&&file.path.endsWith('.aug')).map(file=>file.path).sort();
+const currentBindings=[];
+function bindingFiles(directory){for(const entry of readdirSync(directory,{withFileTypes:true})){
+ assert.ok(!entry.isSymbolicLink(),'Compatibility binding sources must not contain links');
+ const path=join(directory,entry.name);if(entry.isDirectory())bindingFiles(path);else if(entry.isFile()&&path.endsWith('.aug'))currentBindings.push(path);
+}}bindingFiles(manifest.source);
+assert.deepEqual(currentBindings.sort(),previousBindings,'A compatibility release cannot add or remove August bindings');
+for(const file of currentBindings)assert.equal(readFileSync(file).equals(originalFile(file)),true,'August binding changed: '+file);
+
 const files=['native.abi.json','native/sources.lock.json'];
 function collect(directory){for(const entry of readdirSync(directory,{withFileTypes:true})){
  if(entry.name==='licenses'||entry.name.startsWith('.')||entry.name==='target')continue;

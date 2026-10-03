@@ -52,3 +52,5 @@ If publication stops, retry the release workflow on main with the existing tag i
 ## August 0.22 source package
 
 This source tag targets the isolated-worker compiler preview. Its native bindings are unchanged and its manifest deliberately reuses the previously published, checksum-pinned native archives. The existing native ABI remains unchanged. These bindings do not yet declare worker safety; use them on their creating heap. The separate GPU package qualifies worker entry explicitly.
+
+The 0.1.5 source package requires August 0.23.0 and reuses the unchanged reviewed native archives. The compatibility publisher verifies that all August bindings and native contracts are identical; a binding change requires fresh native qualification.
