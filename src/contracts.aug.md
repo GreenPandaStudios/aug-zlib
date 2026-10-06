@@ -2,6 +2,10 @@
 
 # `contracts.aug`
 
+<!-- August spec revision: schema=1 compiler=1.0.0 source-sha256=894877f75b1a16638ace47b8f4e4a7938e4c0354288ee7b6201bc310eb5c7bf1 -->
+
+[Interactions and sequences](contracts.aug.diagrams.md)
+
 <a id="symbol-CompressionError"></a>
 ## `CompressionError` · class · [source](contracts.aug#L2)
 
