@@ -2,33 +2,55 @@
 
 # `api.aug`
 
+<!-- August spec revision: schema=1 compiler=1.0.0 source-sha256=166c959612c47b77901431779b6ecaab5e5c77cecd56150b0f75c01cddf2a6b8 -->
+
+[Interactions and sequences](api.aug.diagrams.md)
+
 <a id="symbol-compress"></a>
 ## `compress` · [source](api.aug#L6)
 
-Compress bytes with the standard zlib framing. It takes `input` as `Bytes`. Failures can raise [`CompressionError`](contracts.aug.md#symbol-CompressionError).
+Compress bytes with the standard zlib framing. It takes `input` as `Bytes`. Within an unsafe block, it returns [`_compress`](api.aug.md#symbol-_compress) with `input`. Native operations must satisfy their declared C contracts. [source](api.aug#L7-L8)
 
-Within an unsafe block, it returns [`_compress`](api.aug.md#symbol-_compress) with `input`. Native operations must satisfy their declared C contracts.
+<details>
+<summary>Checked interface</summary>
+
+```text
+compress(Bytes input) returns Bytes unless CompressionError
+```
+
+It takes `input` as `Bytes`. Failures can raise [`CompressionError`](contracts.aug.md#symbol-CompressionError).
+
+</details>
 
 <a id="symbol-decompress"></a>
 ## `decompress` · [source](api.aug#L10)
 
-Decompress at most maximumOutput bytes (maximum 256 MiB). It takes `input` as `Bytes` and `maximumOutput` as an integer. Failures can raise [`CompressionError`](contracts.aug.md#symbol-CompressionError).
+Decompress at most maximumOutput bytes (maximum 256 MiB). It takes `input` as `Bytes` and `maximumOutput` as an integer. Within an unsafe block, it returns [`_decompress`](api.aug.md#symbol-_decompress) with `input` and `maximumOutput`. Native operations must satisfy their declared C contracts. [source](api.aug#L11-L12)
 
-Within an unsafe block, it returns [`_decompress`](api.aug.md#symbol-_decompress) with `input` and `maximumOutput`. Native operations must satisfy their declared C contracts.
+<details>
+<summary>Checked interface</summary>
+
+```text
+decompress(Bytes input, int maximumOutput) returns Bytes unless CompressionError
+```
+
+It takes `input` as `Bytes` and `maximumOutput` as an integer. Failures can raise [`CompressionError`](contracts.aug.md#symbol-CompressionError).
+
+</details>
 
 <a id="symbol-_compress"></a>
 ## `_compress` · [source](api.aug#L3)
 
 It is private to its defining scope. It takes `input` as `Bytes`. It returns `Bytes`. Failures can raise [`CompressionError`](contracts.aug.md#symbol-CompressionError).
 
-Native implementation: `@greenpandastudios/aug-zlib@0.1.4`, `1.3.2`. Supported targets: linux arm64 glibc 2.36+, linux x64 glibc 2.36+, macos arm64 14.0+. Binding contract: [`native.abi.json`](../.aug-spec/packages/%40greenpandastudios/aug-zlib/0.1.4/native.abi.json) (SHA-256 `c3d4b36eadcccd13caff71597ed77a8e7307f0cfe3d13660a8e9127efe942b3d`). It calls `aug_zlib_compress_v1` through the C ABI on the caller thread; a blocking native call blocks that thread. August copies the returned buffer, then calls `aug_zlib_release_v1` to release it. Its contract does not permit worker entry. The compiler checks the provider, descriptor digest, signature and ownership at August call sites. The native author promises not to retain inputs, enter August from foreign threads, or unwind across the C boundary; internal native workers may run. The compiler does not prove those promises.
+Native implementation: `@greenpandastudios/aug-zlib@0.2.0`, `1.3.2`. Supported targets: linux arm64 glibc 2.36+, linux x64 glibc 2.36+, macos arm64 14.0+. Binding contract: [`native.abi.json`](../.aug-spec/packages/%40greenpandastudios/aug-zlib/0.2.0/native.abi.json) (SHA-256 `c3d4b36eadcccd13caff71597ed77a8e7307f0cfe3d13660a8e9127efe942b3d`). It calls `aug_zlib_compress_v1` through the C ABI on the caller thread; a blocking native call blocks that thread. August copies the returned buffer, then calls `aug_zlib_release_v1` to release it. Its contract does not permit worker entry. The compiler checks the provider, descriptor digest, signature and ownership at August call sites. The native author promises not to retain inputs, enter August from foreign threads, or unwind across the C boundary; internal native workers may run. The compiler does not prove those promises.
 
 <a id="symbol-_decompress"></a>
 ## `_decompress` · [source](api.aug#L4)
 
 It is private to its defining scope. It takes `input` as `Bytes` and `maximumOutput` as an integer. It returns `Bytes`. Failures can raise [`CompressionError`](contracts.aug.md#symbol-CompressionError).
 
-Native implementation: `@greenpandastudios/aug-zlib@0.1.4`, `1.3.2`. Supported targets: linux arm64 glibc 2.36+, linux x64 glibc 2.36+, macos arm64 14.0+. Binding contract: [`native.abi.json`](../.aug-spec/packages/%40greenpandastudios/aug-zlib/0.1.4/native.abi.json) (SHA-256 `c3d4b36eadcccd13caff71597ed77a8e7307f0cfe3d13660a8e9127efe942b3d`). It calls `aug_zlib_decompress_v1` through the C ABI on the caller thread; a blocking native call blocks that thread. August copies the returned buffer, then calls `aug_zlib_release_v1` to release it. Its contract does not permit worker entry. The compiler checks the provider, descriptor digest, signature and ownership at August call sites. The native author promises not to retain inputs, enter August from foreign threads, or unwind across the C boundary; internal native workers may run. The compiler does not prove those promises.
+Native implementation: `@greenpandastudios/aug-zlib@0.2.0`, `1.3.2`. Supported targets: linux arm64 glibc 2.36+, linux x64 glibc 2.36+, macos arm64 14.0+. Binding contract: [`native.abi.json`](../.aug-spec/packages/%40greenpandastudios/aug-zlib/0.2.0/native.abi.json) (SHA-256 `c3d4b36eadcccd13caff71597ed77a8e7307f0cfe3d13660a8e9127efe942b3d`). It calls `aug_zlib_decompress_v1` through the C ABI on the caller thread; a blocking native call blocks that thread. August copies the returned buffer, then calls `aug_zlib_release_v1` to release it. Its contract does not permit worker entry. The compiler checks the provider, descriptor digest, signature and ownership at August call sites. The native author promises not to retain inputs, enter August from foreign threads, or unwind across the C boundary; internal native workers may run. The compiler does not prove those promises.
 
 <a id="symbol-test compress"></a>
 ## `test compress` · [source](api.aug#L14)
@@ -39,13 +61,13 @@ Tests [`compress`](api.aug.md#symbol-compress). Each case gets fresh setup and d
 
 #### `preserves_bytes` · [source](api.aug#L16)
 
-It sets `input` of type `Bytes` to the UTF-8 bytes of `"The world runs on language"`. It sets `packed` of type `Bytes` to [`compress`](api.aug.md#symbol-compress) with `input`. It sets `restored` of type `Bytes` to [`decompress`](api.aug.md#symbol-decompress) with `input` from `packed` and `maximumOutput` `4096`. The test requires `restored.text` equals `"The world runs on language"`.
+It sets `input` of type `Bytes` to the UTF-8 bytes of `"The world runs on language"`. It sets `packed` of type `Bytes` to [`compress`](api.aug.md#symbol-compress) with `input`. It sets `restored` of type `Bytes` to [`decompress`](api.aug.md#symbol-decompress) with `input` from `packed` and `maximumOutput` `4096`. The test requires `restored.text` equals `"The world runs on language"`. [source](api.aug#L17-L20)
 
 #### `checks_output_limit` · [source](api.aug#L21)
 
-It sets `packed` of type `Bytes` to [`compress`](api.aug.md#symbol-compress) with `input` from the UTF-8 bytes of `"length limit"`. It sets `rejected` to `false`.
+It sets `packed` of type `Bytes` to [`compress`](api.aug.md#symbol-compress) with `input` from the UTF-8 bytes of `"length limit"`. It sets `rejected` to `false`. [source](api.aug#L22-L23)
 
-It tries to call [`decompress`](api.aug.md#symbol-decompress) with `input` from `packed` and `maximumOutput` `1`. If this work raises [`CompressionError`](contracts.aug.md#symbol-CompressionError), it sets `rejected` to `true`. The test requires `rejected` is true.
+It tries to call [`decompress`](api.aug.md#symbol-decompress) with `input` from `packed` and `maximumOutput` `1`. If this work raises [`CompressionError`](contracts.aug.md#symbol-CompressionError), it sets `rejected` to `true`. The test requires `rejected` is true. [source](api.aug#L24-L28)
 
 ## Dependencies
 

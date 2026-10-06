@@ -2,6 +2,10 @@
 
 # `export.aug`
 
+<!-- August spec revision: schema=1 compiler=1.0.0 source-sha256=08c3a05e438279666e3faef812e1b3dc23d390d485cebb552d35ba4ed28403fc -->
+
+[Interactions and sequences](export.aug.diagrams.md)
+
 ## Exports
 
 Export the declaration `CompressionError` from [`contracts.aug`](contracts.aug.md#symbol-CompressionError). Export the declaration `compress` from [`api.aug`](api.aug.md#symbol-compress). Export the declaration `decompress` from [`api.aug`](api.aug.md#symbol-decompress).
